@@ -44,8 +44,8 @@ export class AuthService {
 
     return {
       user: payload,
-      access_token: this.jwtService.sign(payload),
-      refresh_token: await this.generateRefreshToken(existingUser.id),
+      accessToken: this.jwtService.sign(payload),
+      refreshToken: await this.generateRefreshToken(existingUser.id),
     };
   }
 
@@ -86,7 +86,7 @@ export class AuthService {
         storedToken.userId,
       );
 
-      return { access_token: newAccessToken, refresh_token: newRefreshToken };
+      return { accessToken: newAccessToken, refreshToken: newRefreshToken };
     } catch (error) {
       throw new UnauthorizedException('Invalid refresh token');
     }
